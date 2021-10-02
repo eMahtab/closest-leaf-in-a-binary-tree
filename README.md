@@ -89,3 +89,15 @@ class Solution {
     }
 }
 ```
+
+### Complexity Analysis :
+```
+Time Complexity: O(N) where N is the number of nodes in the given input tree.
+
+Space Complexity: O(N), the size of the graph.
+```
+
+
+# References :
+1. https://leetcode.com/problems/closest-leaf-in-a-binary-tree/solution
+
