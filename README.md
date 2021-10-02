@@ -7,3 +7,75 @@ Closest Leaf node from a given node in a binary tree
 ## Approach : Create graph from the given tree and BFS
 We will first create a graph from the given binary tree. Once we have the graph, all we need to do is, to find the first leaf node using BFS, starting from the sourceNode `k`.
 So this problem is, finding the shortest path in an unweighted undirected graph. 
+
+
+
+# Implementation : Graph + BFS
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    TreeNode sourceNode = null;
+    public int findClosestLeaf(TreeNode root, int k) {
+        if(root == null)
+            return -1;
+        Map<Integer,List<TreeNode>> graph = new HashMap<>();
+        // Create a graph representation from given binary 
+        dfs(root, graph, null, k);
+        // Next do BFS traversal to find the closest leaf to node k
+        Queue<TreeNode> q = new ArrayDeque<>();
+        Set<Integer> visited = new HashSet<>();
+        // Start the BFS from the sourceNode k
+        q.add(sourceNode);
+        visited.add(sourceNode.val);
+        while(!q.isEmpty()) {
+            int size = q.size();
+            for(int i = 0; i < size; i++) {
+                TreeNode node = q.remove();
+                if(node.left == null && node.right == null)
+                    return node.val;
+                List<TreeNode> neighbors = graph.get(node.val);
+                // add neighbors to the queue
+                for(TreeNode neighbor : neighbors) {
+                    if(!visited.contains(neighbor.val)) {
+                        q.add(neighbor);
+                        visited.add(neighbor.val);
+                    }  
+                }
+            }
+        }
+        return -1;
+    }
+    
+    private void dfs(TreeNode node, Map<Integer, List<TreeNode>> graph, TreeNode parent, int k) {
+        if(node == null)
+            return;
+        if(node.val == k)
+            sourceNode = node;
+        graph.putIfAbsent(node.val, new ArrayList<TreeNode>());
+        List<TreeNode> neighbors = graph.get(node.val);
+        if(node.left != null)
+            neighbors.add(node.left);
+        if(node.right != null)
+            neighbors.add(node.right);
+        if(parent != null) {
+            neighbors.add(parent);
+        }
+        dfs(node.left, graph, node, k);
+        dfs(node.right, graph, node, k);
+    }
+}
+```
