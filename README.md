@@ -18,7 +18,7 @@ Constraints:
 We will first create a graph from the given binary tree. Once we have the graph, all we need to do is, to find the first leaf node using BFS, starting from the sourceNode `k`.
 So this problem is, finding the shortest path in an unweighted undirected graph. 
 
-
+!["Closest leaf in a binary tree"](closest-leaf-in-a-binary-tree.jpg?raw=true)
 
 # Implementation : Graph + BFS
 ```java
