@@ -3,6 +3,16 @@ Closest Leaf node from a given node in a binary tree
 
 ## https://leetcode.com/problems/closest-leaf-in-a-binary-tree
 
+```
+Constraints:
+
+1. The number of nodes in the tree is in the range [1, 1000].
+2. 1 <= Node.val <= 1000
+3. All the values of the tree are unique.
+4. There exist some node in the tree where Node.val == k.
+
+```
+
 
 ## Approach : Create graph from the given tree and BFS
 We will first create a graph from the given binary tree. Once we have the graph, all we need to do is, to find the first leaf node using BFS, starting from the sourceNode `k`.
