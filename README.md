@@ -56,8 +56,7 @@ class Solution {
         q.add(sourceNode);
         visited.add(sourceNode.val);
         while(!q.isEmpty()) {
-            int size = q.size();
-            for(int i = 0; i < size; i++) {
+            
                 TreeNode node = q.remove();
                 if(node.left == null && node.right == null)
                     return node.val;
@@ -69,7 +68,7 @@ class Solution {
                         visited.add(neighbor.val);
                     }  
                 }
-            }
+            
         }
         return -1;
     }
