@@ -2,6 +2,7 @@
 Closest Leaf node from a given node in a binary tree
 
 ## https://leetcode.com/problems/closest-leaf-in-a-binary-tree
+## https://www.lintcode.com/problem/854
 
 Given the root of a binary tree where every node has a unique value and a target integer k, return the value of the nearest leaf node to the target k in the tree.
 
